@@ -1,0 +1,26 @@
+.hero-background {
+  background-color: #0d0d0d;
+
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+
+  background-size:
+    60px 60px,
+    60px 60px;
+}
+
+.section-label {
+  background-color: rgba(39, 23, 11, 0.7);
+  border: 1px solid rgba(174, 79, 12, 0.6);
+}
+
+.active {
+  background: linear-gradient(to right, #ff6900, #f54a00);
+  color: white;
+}
+
+.activeShape {
+  background-color: #ff6900;
+  color: white;
+}

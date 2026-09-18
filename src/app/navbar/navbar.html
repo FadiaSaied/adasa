@@ -1,0 +1,85 @@
+<nav class="bg-[var(--mainColor-18)] fixed w-full z-20 top-0 start-0">
+  <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+    <a routerLink="/home" class="flex items-center gap-2 text-white cursor-pointer">
+      <img src="/logo-GdqARQRt.png" class="h-12" alt="Logo" />
+
+      <div>
+        <span class="block text-[20px] font-bold">عدسة</span>
+        <span class="block mt-[-3px] text-[12px] font-normal text-[#fb923ccc]">
+          عالم التصوير الفوتوغرافي
+        </span>
+      </div>
+    </a>
+
+    <button
+      type="button"
+      (click)="toggleMenu()"
+      class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-white rounded-xl md:hidden hover:bg-[#161616] transition-all duration-300"
+      aria-label="Open main menu"
+    >
+      <i class="fa-solid" [class.fa-bars]="!isMenuOpen" [class.fa-xmark]="isMenuOpen"></i>
+    </button>
+
+    <div class="w-full md:block md:w-auto" [class.hidden]="!isMenuOpen">
+      <div class="flex flex-col items-center gap-4 mt-4 md:mt-0">
+        <ul
+          class="font-medium flex flex-col md:flex-row items-center bg-[#161616] border border-[#262626] py-2 px-4 rounded-3xl md:rounded-full gap-6 w-full"
+        >
+          <li>
+            <a
+              routerLink="/home"
+              routerLinkActive="active"
+              class="block py-2.5 px-5 text-[var(--secondaryColor-01)] hover:text-white transition-all duration-300 text-sm rounded-full md:px-4 md:py-2"
+            >
+              الرئيسيه
+            </a>
+          </li>
+
+          <li>
+            <a
+              routerLink="/blog"
+              routerLinkActive="active"
+              class="block py-2.5 px-5 text-[var(--secondaryColor-01)] hover:text-white transition-all duration-300 text-sm rounded-full md:px-4 md:py-2"
+            >
+              المدونة
+            </a>
+          </li>
+
+          <li>
+            <a
+              routerLink="/who"
+              routerLinkActive="active"
+              class="block py-2.5 px-5 text-[var(--secondaryColor-01)] hover:text-white transition-all duration-300 text-sm rounded-full md:px-4 md:py-2"
+            >
+              من نحن
+            </a>
+          </li>
+
+          <li class="md:hidden w-full">
+            <a
+              routerLink="/blog"
+              class="block text-center font-semibold text-sm text-white rounded-full py-4 px-8 bg-linear-to-r from-orange-500 to-orange-600 hover:translate-y-[-2px] transition-all duration-300"
+            >
+              ابدأ بالقراءة
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="hidden md:flex items-center gap-4">
+      <button
+        class="flex justify-center items-center text-neutral-500 hover:text-orange-500 p-3 hover:bg-[#161616] hover:border-[#262626] rounded-xl transition-all duration-300 border border-transparent cursor-pointer"
+      >
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </button>
+
+      <a
+        routerLink="/blog"
+        class="font-semibold text-sm text-white text-center rounded-full py-4 px-8 bg-linear-to-r from-orange-500 to-orange-600 hover:translate-y-[-2px] transition-all duration-300"
+      >
+        ابدأ بالقراءة
+      </a>
+    </div>
+  </div>
+</nav>

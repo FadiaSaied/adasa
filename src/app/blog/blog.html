@@ -1,0 +1,291 @@
+<section class="mt-20 min-h-screen hero-background">
+  <div class="absolute inset-0">
+    <div class="absolute top-0 left-1/4 w-96 h-96 rounded-full bg-orange-500/10 blur-3xl"></div>
+    <div class="absolute bottom-0 right-1/4 w-96 h-96 rounded-ful bg-yellow-500/5 blur-3xl"></div>
+  </div>
+
+  <div class="mb-6 flex items-center justify-center flex-col">
+    <div class="section-label flex items-center gap-2 mb-6 mt-20 py-2 px-4 rounded-full">
+      <span class="text-[6px]"
+        ><i class="fa-solid fa-circle fa-beat-fade" style="color: #f77416"></i
+      ></span>
+      <span class="text-orange-500 text-[12px]"><i class="fa-solid fa-newspaper"></i></span>
+      <span class="text-[#f97316] text-sm font-medium">مدونتنا</span>
+    </div>
+
+    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
+      استكشف <span class="gradient">مقالاتنا</span>
+    </h1>
+    <p class="text-xl font-normal text-(--secondaryColor-01) mb-4">
+      اكتشف الدروس والرؤى وأفضل الممارسات للتطوير الحديث
+    </p>
+  </div>
+  <div
+    class="py-4 mt-18 bg-[#0a0a0a]/90 sticky top-20 z-40 backdrop-blur-xl border-b border-[#262626]"
+  >
+    <div class="container">
+      <div class="flex items-center justify-between flex-col gap-4 md:flex-row">
+        <div class="w-full md:w-80 relative">
+          <input
+            [(ngModel)]="searchText"
+            type="text"
+            placeholder="ابحث في المقالات..."
+            class="text-white px-5 py-4 border border-[#262626] bg-[#0a0a0a] rounded-xl placeholder-neutral-500 w-full transition-all focus:outline-none focus:border-orange-500/50 focus:ring-1 focus:ring-orange-500"
+          />
+
+          <span class="absolute left-4 top-1/2 -translate-y-1/2 text-neutral-500 h-5"
+            ><i class="fa-solid fa-magnifying-glass"></i
+          ></span>
+        </div>
+        <div class="flex items-center gap-2 flex-wrap">
+          <button
+            (click)="displayCategory('all')"
+            [class.active]="selectedCategory === 'all'"
+            class="cursor-pointer text-sm font-medium bg-[#161616] border border-[#262626] text-neutral-400 px-4 py-2 rounded-xl transition-all duration-300 hover:border-orange-500/30"
+          >
+            جميع المقالات
+          </button>
+          <button
+            (click)="displayCategory('إضاءة')"
+            [class.active]="selectedCategory === 'إضاءة'"
+            class="cursor-pointer text-sm font-medium bg-[#161616] border border-[#262626] text-neutral-400 px-4 py-2 rounded-xl transition-all duration-300 hover:border-orange-500/30"
+          >
+            اضاءة
+          </button>
+          <button
+            (click)="displayCategory('بورتريه')"
+            [class.active]="selectedCategory === 'بورتريه'"
+            class="cursor-pointer text-sm font-medium bg-[#161616] border border-[#262626] text-neutral-400 px-4 py-2 rounded-xl transition-all duration-300 hover:border-orange-500/30"
+          >
+            بورترية
+          </button>
+          <button
+            (click)="displayCategory('مناظر طبيعية')"
+            [class.active]="selectedCategory === 'مناظر طبيعية'"
+            class="cursor-pointer text-sm font-medium bg-[#161616] border border-[#262626] text-neutral-400 px-4 py-2 rounded-xl transition-all duration-300 hover:border-orange-500/30"
+          >
+            مناظر طبيعية
+          </button>
+          <button
+            (click)="displayCategory('تقنيات')"
+            [class.active]="selectedCategory === 'تقنيات'"
+            class="cursor-pointer text-sm font-medium bg-[#161616] border border-[#262626] text-neutral-400 px-4 py-2 rounded-xl transition-all duration-300 hover:border-orange-500/30"
+          >
+            تقنيات
+          </button>
+          <button
+            (click)="displayCategory('معدات')"
+            [class.active]="selectedCategory === 'معدات'"
+            class="cursor-pointer text-sm font-medium bg-[#161616] border border-[#262626] text-neutral-400 px-4 py-2 rounded-xl transition-all duration-300 hover:border-orange-500/30"
+          >
+            معدات
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="px-4 sm:px-6 lg:px-8 py-12 bg-[#0a0a0a]/90 backdrop-blur-xl">
+    <div class="container">
+      <div class="flex items-center justify-between mb-8">
+        @if (selectedCategory === 'all') {
+          <p class="text-neutral-400">
+            عرض <span class="text-white font-bold">{{ filterCategories.length }}</span> مقالات
+          </p>
+        } @else {
+          <p class="text-neutral-400">
+            عرض <span class="text-white font-bold">{{ filterCategories.length }}</span> مقالات في
+            <span class="font-bold text-orange-500"> {{ selectedCategory }}</span>
+          </p>
+        }
+
+        <div
+          class="flex items-center gap-1 px-1 py-1 rounded-xl bg-[#161616] border border-[#262626]"
+        >
+          <button
+            (click)="changeMode('grid')"
+            [class.activeShape]="viewMode === 'grid'"
+            class="p-2 rounded-xl text-neutral-400 transition-all duration-300 hover:text-white"
+          >
+            <span class="text-xl flex items-center justify-center">
+              <i class="fa-solid fa-table-cells-large"></i
+            ></span>
+          </button>
+          <button
+            (click)="changeMode('list')"
+            [class.activeShape]="viewMode === 'list'"
+            class="p-1 rounded-xl text-neutral-400 transition-all duration-300 hover:text-white"
+          >
+            <span class="text-xl flex items-center justify-center"
+              ><i class="fa-solid fa-bars"></i
+            ></span>
+          </button>
+        </div>
+      </div>
+      @if (viewMode === 'list') {
+        <section class="space-y-8 mt-8">
+          @for (article of filterCategories; track article.id) {
+            <article
+              class="group bg-[#161616] rounded-3xl overflow-hidden border border-[#262626] hover:border-orange-500/30 transition-all duration-500"
+            >
+              <a routerLink="/blog/article">
+                <div class="grid md:grid-cols-2 gap-0">
+                  <div class="relative h-72 md:h-100 overflow-hidden">
+                    <img
+                      class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                      [src]="article.image"
+                      [alt]="article.title"
+                    />
+                    <div
+                      class="absolute top-2 right-4 rounded-full py-0.5 px-3 bg-linear-to-r from-orange-500 to-yellow-500 flex items-center justify-center gap-1"
+                    >
+                      <span><i class="fa-solid fa-star text-white text-2xs"></i></span>
+                      <span class="text-xs font-semibold text-white">مميز</span>
+                    </div>
+                  </div>
+                  <div class="flex flex-col bg-[#161616] p-8 md:p-10">
+                    <div class="flex items-center gap-3 mb-4">
+                      <span
+                        class="text-orange-500 text-xs font-semibold bg-orange-500/10 border border-orange-500/20 px-3 py-1 rounded-full"
+                        >{{ article.category }}</span
+                      >
+                      <div class="text-neutral-500 text-sm flex items-center gap-1">
+                        <span><i class="fa-solid fa-clock"></i></span>
+                        <span>{{ article.readTime }}</span>
+                      </div>
+                    </div>
+                    <h2
+                      class="text-white font-bold sm:text-2xl md:text-3xl mb-4 leading-tight transition-colors duration-300 group-hover:text-orange-500"
+                    >
+                      {{ article.title }}
+                    </h2>
+                    <p class="text-neutral-400 mb-5 md:mb-12 lg:mb-28 leading-relaxed">
+                      {{ article.excerpt }}
+                    </p>
+                    <div class="flex items-center justify-between">
+                      <div class="flex items-center gap-3">
+                        <div class="relative">
+                          <img
+                            class="w-12 h-12 object-cover rounded-full ring-2 ring-[#262626] shadow-md"
+                            [src]="article.author.avatar"
+                            [alt]="article.author.name"
+                          />
+                          <div
+                            class="absolute w-4 h-4 rounded-full bottom-0 left-0 bg-orange-500 border-2 border-[#161616]"
+                          ></div>
+                        </div>
+                        <div>
+                          <h3 class="text-sm font-semibold text-white">
+                            {{ article.author.name }}
+                          </h3>
+                          <p class="text-sm text-neutral-500 mt-1">
+                            {{ article.date }}
+                          </p>
+                        </div>
+                      </div>
+                      <div
+                        class="flex items-center gap-2 text-orange-500 font-semibold text-sm group-hover:gap-3 transition-all duration-300"
+                      >
+                        <span>اقرا المقال</span>
+                        <span><i class="fa-solid fa-arrow-left-long"></i></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </article>
+          }
+        </section>
+      }
+
+      @if (viewMode === 'grid') {
+        <section class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
+          @for (article of filterCategories; track article.id) {
+            <a
+              routerLink="/blog/article"
+              class="group rounded-3xl overflow-hidden bg-[#151515] border border-[#262626] hover:border-neutral-600 transition-all duration-500 hover:-translate-y-1"
+            >
+              <div>
+                <div class="relative h-50 overflow-hidden">
+                  <img
+                    [src]="article.image"
+                    [alt]="article.title"
+                    class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+                  <div
+                    class="absolute top-2 right-4 rounded-full border border-[#333] py-0.5 px-3 bg-[#0a0a0a]/80 text-white text-sm font-semibold"
+                  >
+                    <span class="text-xs font-semibold text-white">{{ article.category }}</span>
+                  </div>
+                  <div
+                    class="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent transition-opacity duration-500 opacity-0 group-hover:opacity-100"
+                  ></div>
+                </div>
+                <div class="p-6">
+                  <div class="flex items-center gap-3 text-neutral-500 mb-3 text-sm">
+                    <div class="text-neutral-500 text-sm flex items-center gap-1">
+                      <span><i class="fa-solid fa-clock"></i></span>
+                      <span>{{ article.readTime }}</span>
+                    </div>
+                    <span class="text-[5px]"><i class="fa-solid fa-circle"></i></span>
+                    <span>{{ article.date }}</span>
+                  </div>
+                  <h3
+                    class="font-bold text-white mb-3 text-xl leading-tight transition-colors duration-300 group-hover:text-orange-500"
+                  >
+                    {{ article.title }}
+                  </h3>
+                  <p class="text-neutral-400 mb-5 text-sm leading-relaxed">
+                    {{ article.excerpt }}
+                  </p>
+                  <div class="flex items-center justify-between pt-4 border-t border-[#262626]">
+                    <div class="flex items-center gap-3">
+                      <img
+                        [src]="article.author.avatar"
+                        [alt]="article.author.name"
+                        class="rounded-full w-9 h-9 object-cover ring-2 ring-[#262626]"
+                      />
+                      <div>
+                        <h3 class="text-white text-sm font-medium">{{ article.author.name }}</h3>
+                        <p class="text-neutral-500 text-sm">{{ article.author.role }}</p>
+                      </div>
+                    </div>
+                    <div
+                      class="w-8 h-8 rounded-full border border-orange-500/20 bg-orange-500/10 flex justify-center items-center text-orange-500 transition-all duration-300 group-hover:bg-orange-500 group-hover:border-transparent"
+                    >
+                      <i
+                        class="fa-solid fa-angle-left transition-all duration-300 group-hover:text-white"
+                      ></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </a>
+          }
+        </section>
+      }
+
+      @if (filterCategories.length === 0) {
+        <div class="flex flex-col items-center justify-center py-20">
+          <div
+            class="w-24 h-24 rounded-full bg-[#161616] border border-[#262626] mb-6 flex items-center justify-center"
+          >
+            <span class="w-12 h-12 text-neutral-500 text-4xl flex items-center justify-center"
+              ><i class="fa-regular fa-face-frown"></i
+            ></span>
+          </div>
+          <h2 class="text-white text-2xl font-bold">لا توجد مقالات</h2>
+
+          <p class="text-neutral-400 mt-2 mb-6">
+            حاول تعديل البحث أو الفلتر للعثور على ما تبحث عنه.
+          </p>
+          <button
+            (click)="resetFilters()"
+            class="text-white cursor-pointer flex items-center gap-2 bg-orange-500 font-bold rounded-full px-6 py-4"
+          >
+            <i class="fa-solid fa-repeat"></i> اعاده تعيين الفلاتر
+          </button>
+        </div>
+      }
+    </div>
+  </div>
+</section>

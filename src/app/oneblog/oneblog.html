@@ -1,0 +1,415 @@
+<section class="min-h-screen bg-[#0a0a0a]">
+  @for (article of articleList | slice: 0 : 1; track article.id) {
+    <div class="relative z-10 h-[90vh] min-h-125 overflow-hidden">
+      <div
+        class="absolute inset-0 bg-linear-to-t from-[#0a0a0a] via-[#0a0a0a]/50 to-transparent"
+      ></div>
+      <div class="absolute inset-0 bg-linear-to-r from-[#0a0a0a]/30 to-transparent"></div>
+      <img [src]="article.image" [alt]="article.title" class="w-full h-full object-cover" />
+      <div class="absolute top-30 right-8 left-8">
+        <div
+          class="flex items-center gap-2 w-fit px-4 py-2 bg-black/30 backdrop-blur-md text-sm rounded-full border border-white/10"
+        >
+          <a
+            routerLink="/home"
+            class="text-white/70 hover:text-white transition-colors duration-300"
+          >
+            <i class="fa-solid fa-house-user"></i>
+          </a>
+
+          <span class="text-sm text-white/30">
+            <i class="fa-solid fa-angle-left"></i>
+          </span>
+
+          <a
+            routerLink="/blog"
+            class="text-white/70 hover:text-white transition-colors duration-300"
+          >
+            المدونه
+          </a>
+
+          <span class="text-sm text-white/30">
+            <i class="fa-solid fa-angle-left"></i>
+          </span>
+
+          <span class="text-orange-400 font-medium"> {{ article.category }}</span>
+        </div>
+      </div>
+
+      <div class="absolute left-30 top-40 right-0 p-8 md:p-12">
+        <div class="flex flex-col max-w-4xl mx-auto">
+          <div class="flex flex-wrap items-center gap-3 mb-6 text-neutral-500 text-sm">
+            <button
+              class="px-4 py-2 bg-orange-500 text-white text-sm rounded-full font-bold transition-colors duration-300 hover:bg-orange-600"
+            >
+              {{ article.category }}
+            </button>
+
+            <div class="text-white/70 flex items-center gap-2">
+              <span>
+                <i class="fa-regular fa-calendar"></i>
+              </span>
+
+              <span>{{ article.date }}</span>
+            </div>
+
+            <div class="text-white/70 flex items-center gap-2">
+              <span>
+                <i class="fa-solid fa-clock"></i>
+              </span>
+
+              <span>{{ article.readTime }}</span>
+            </div>
+          </div>
+
+          <h1 class="text-3xl md:text-5xl lg:text-6xl text-white font-bold mb-6 leading-tight">
+            {{ article.title }}
+          </h1>
+
+          <div
+            class="flex items-center gap-3 bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 w-fit py-4 px-6"
+          >
+            <img
+              [src]="article.author.avatar"
+              [alt]="article.author.name"
+              class="rounded-full w-14 h-14 object-cover ring-2 ring-orange-500/50"
+            />
+            <div>
+              <h3 class="text-white font-bold">{{ article.author.name }}</h3>
+              <p class="text-white/60 text-sm">{{ article.author.role }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  }
+</section>
+<div class="bg-[#0a0a0a] pb-20">
+  <div class="container">
+    <div class="grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-12">
+      <div>
+        <p
+          class="text-neutral-200 leading-relaxed italic text-lg border border-orange-500/20 mb-10 rounded-2xl p-6 bg-linear-to-r from-orange-500/10 to-yellow-500/5"
+        >
+          تعلم كيفية التقاط صور مذهلة خلال الساعة الذهبية مع نصائح احترافية حول الإضاءة والتكوين.
+        </p>
+
+        <p class="text-neutral-300 mb-15 text-lg leading-relaxed">
+          الساعة الذهبية هي أكثر الأوقات سحراً للتصوير الفوتوغرافي. ذلك الوقت القصير بعد شروق الشمس
+          وقبل غروبها حيث يكون الضوء ناعماً ودافئاً وساحراً.
+        </p>
+
+        <div>
+          <div class="mb-15">
+            <div class="flex items-center gap-4">
+              <span
+                class="flex items-center justify-center w-10 h-10 border border-orange-500/30 bg-orange-500/10 rounded-xl text-orange-500"
+              >
+                <i class="fa-solid fa-camera text-3xl"></i>
+              </span>
+
+              <h2 class="text-2xl text-white font-bold md:text-3xl">لماذا الساعة الذهبية؟</h2>
+            </div>
+
+            <p class="text-lg text-neutral-300 mb-4 mt-6 leading-relaxed">
+              الضوء خلال هذا الوقت له صفات فريدة: ظلال طويلة ناعمة، ألوان دافئة ذهبية، وتباين منخفض
+              يجعل كل شيء يبدو أجمل. البورتريهات تكتسب توهجاً طبيعياً والمناظر الطبيعية تتحول إلى
+              لوحات فنية.
+            </p>
+          </div>
+
+          <div class="mb-15">
+            <div class="flex items-center gap-4">
+              <span
+                class="flex items-center justify-center w-10 h-10 border border-orange-500/30 bg-orange-500/10 rounded-xl text-orange-500"
+              >
+                <i class="fa-solid fa-camera text-3xl"></i>
+              </span>
+
+              <h2 class="text-2xl text-white font-bold md:text-3xl">التحضير المسبق</h2>
+            </div>
+
+            <p class="text-lg text-neutral-300 mb-4 mt-6 leading-relaxed">
+              خطط لجلسة التصوير مسبقاً. استخدم تطبيقات مثل PhotoPills لمعرفة وقت الساعة الذهبية بدقة
+              في موقعك. وصل قبل 30 دقيقة لاختيار أفضل زاوية.
+            </p>
+          </div>
+
+          <div class="mb-15">
+            <div class="flex items-center gap-4">
+              <span
+                class="flex items-center justify-center w-10 h-10 border border-orange-500/30 bg-orange-500/10 rounded-xl text-orange-500"
+              >
+                <i class="fa-solid fa-camera text-3xl"></i>
+              </span>
+
+              <h2 class="text-2xl text-white font-bold md:text-3xl">إعدادات الكاميرا</h2>
+            </div>
+
+            <p class="text-lg text-neutral-300 mb-4 mt-6 leading-relaxed">
+              استخدم ISO منخفض للحصول على أقل ضوضاء. فتحة العدسة تعتمد على ما تريد: f/1.8-f/2.8
+              للبورتريهات مع خلفية ضبابية، أو f/8-f/11 للمناظر الطبيعية الحادة.
+            </p>
+          </div>
+
+          <div class="mb-15">
+            <div class="flex items-center gap-4">
+              <span
+                class="flex items-center justify-center w-10 h-10 border border-orange-500/30 bg-orange-500/10 rounded-xl text-orange-500"
+              >
+                <i class="fa-solid fa-camera text-3xl"></i>
+              </span>
+
+              <h2 class="text-2xl text-white font-bold md:text-3xl">التكوين الفني</h2>
+            </div>
+
+            <p class="text-lg text-neutral-300 mb-4 mt-6 leading-relaxed">
+              ضع الشمس خلف موضوعك للحصول على تأثير الإضاءة الخلفية الساحر. أو استخدمها كمصدر جانبي
+              لإبراز الملمس والعمق.
+            </p>
+          </div>
+
+          <div class="mb-15">
+            <div class="flex items-center gap-4">
+              <span
+                class="flex items-center justify-center w-10 h-10 border border-orange-500/30 bg-orange-500/10 rounded-xl text-orange-500"
+              >
+                <i class="fa-solid fa-camera text-3xl"></i>
+              </span>
+
+              <h2 class="text-2xl text-white font-bold md:text-3xl">الخلاصة</h2>
+            </div>
+
+            <p class="text-lg text-neutral-300 mb-4 mt-6 leading-relaxed">
+              الساعة الذهبية هي هدية للمصورين. استغلها جيداً وستحصل على صور لا تُنسى تتميز بجمالها
+              الطبيعي.
+            </p>
+          </div>
+        </div>
+
+        <div class="bg-[#111] border border-[#262626] mt-14 p-6 rounded-2xl">
+          <div class="flex items-center gap-3 mb-4">
+            <span
+              class="w-10 h-10 border border-orange-500/30 bg-orange-500/10 rounded-xl flex items-center justify-center"
+            >
+              <i class="fa-solid fa-tags text-orange-500"></i>
+            </span>
+
+            <h3 class="text-white font-body">الوسوم</h3>
+          </div>
+
+          <div class="flex items-center gap-2 flex-wrap">
+            <a
+              href="#"
+              class="border border-[#262626] bg-[#1a1a1a] text-neutral-400 px-4 py-2 text-sm rounded-full transition-colors hover:text-orange-500 hover:border-orange-500/50"
+            >
+              #اضاءه
+            </a>
+
+            <a
+              href="#"
+              class="border border-[#262626] bg-[#1a1a1a] text-neutral-400 px-4 py-2 text-sm rounded-full transition-colors hover:text-orange-500 hover:border-orange-500/50"
+            >
+              #الساعه الذهبية
+            </a>
+
+            <a
+              href="#"
+              class="border border-[#262626] bg-[#1a1a1a] text-neutral-400 px-4 py-2 text-sm rounded-full transition-colors hover:text-orange-500 hover:border-orange-500/50"
+            >
+              #تصوير خارجي
+            </a>
+          </div>
+        </div>
+
+        <div
+          class="bg-[#111] border border-[#262626] mt-14 p-6 rounded-2xl flex items-center justify-between gap-6"
+        >
+          <div class="flex items-center gap-3">
+            <span
+              class="w-10 h-10 border border-orange-500/30 bg-orange-500/10 rounded-xl flex items-center justify-center"
+            >
+              <i class="fa-solid fa-share-nodes text-orange-500"></i>
+            </span>
+
+            <h3 class="text-white font-body">شارك المقال</h3>
+          </div>
+
+          <div class="flex items-center gap-2">
+            <a
+              href="#"
+              class="cursor-pointer w-11 h-11 bg-[#1a1a1a] border border-[#262626] rounded-xl flex items-center justify-center text-neutral-400 transition-all duration-300 hover:border-transparent hover:bg-[#1EA1F2] hover:text-white"
+            >
+              <i class="fa-brands fa-x-twitter"></i>
+            </a>
+
+            <a
+              href="#"
+              class="cursor-pointer w-11 h-11 bg-[#1a1a1a] border border-[#262626] rounded-xl flex items-center justify-center text-neutral-400 transition-all duration-300 hover:border-transparent hover:bg-[#1EA1F2] hover:text-white"
+            >
+              <i class="fa-brands fa-linkedin-in"></i>
+            </a>
+
+            <a
+              href="#"
+              class="cursor-pointer w-11 h-11 bg-[#1a1a1a] border border-[#262626] rounded-xl flex items-center justify-center text-neutral-400 transition-all duration-300 hover:border-transparent hover:bg-[#25D366] hover:text-white"
+            >
+              <i class="fa-brands fa-whatsapp"></i>
+            </a>
+
+            <a
+              href="#"
+              class="cursor-pointer w-11 h-11 bg-[#1a1a1a] border border-[#262626] rounded-xl flex items-center justify-center text-neutral-400 transition-all duration-300 hover:border-transparent hover:bg-[#FF6800] hover:text-white"
+            >
+              <i class="fa-solid fa-link"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="bg-[#111] border border-[#262626] mt-14 p-6 rounded-2xl">
+          <div class="flex items-center gap-6">
+            <img
+              src="/photo-1500648767791-00dcc994a43e.jpeg"
+              alt="سالم أحمد"
+              class="rounded-2xl w-24 h-24 object-cover ring-4 ring-orange-500/20"
+            />
+
+            <div>
+              <span class="text-orange-500 text-xs font-semibold"> كاتب المقال </span>
+
+              <h3 class="text-white font-bold mt-1 text-xl">سالم أحمد</h3>
+
+              <span class="text-neutral-500 text-sm"> مصور محترف </span>
+
+              <p class="text-neutral-400 text-sm leading-relaxed mt-2">
+                مصور محترف شغوف بمشاركة المعرفة والخبرات في عالم التصوير الفوتوغرافي.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sticky top-24 self-start">
+        <div class="bg-[#111111] border border-[#262626] p-6 rounded-2xl">
+          <div class="flex items-center gap-3 mb-5">
+            <span
+              class="w-10 h-10 rounded-xl border border-orange-500/30 bg-orange-500/10 flex items-center justify-center"
+            >
+              <i class="fa-solid fa-list text-orange-500"></i>
+            </span>
+
+            <h3 class="text-white font-bold">محتويات المقال</h3>
+          </div>
+
+          <div>
+            <div
+              class="flex items-center gap-3 p-3 rounded-xl text-neutral-400 transition-all duration-300 group cursor-pointer hover:text-orange-500 hover:bg-orange-500/5"
+            >
+              <span
+                class="flex items-center justify-center text-sm font-bold text-neutral-500 w-7 h-7 rounded-lg bg-[#1a1a1a] group-hover:bg-orange-500/10 group-hover:text-orange-500 transition-colors"
+              >
+                1
+              </span>
+
+              <span> لماذا الساعه الذهبية </span>
+            </div>
+
+            <div
+              class="flex items-center gap-3 p-3 rounded-xl text-neutral-400 transition-all duration-300 group cursor-pointer hover:text-orange-500 hover:bg-orange-500/5"
+            >
+              <span
+                class="flex items-center justify-center text-sm font-bold text-neutral-500 w-7 h-7 rounded-lg bg-[#1a1a1a] group-hover:bg-orange-500/10 group-hover:text-orange-500 transition-colors"
+              >
+                2
+              </span>
+
+              <span> التحضير المسبق </span>
+            </div>
+
+            <div
+              class="flex items-center gap-3 p-3 rounded-xl text-neutral-400 transition-all duration-300 group cursor-pointer hover:text-orange-500 hover:bg-orange-500/5"
+            >
+              <span
+                class="flex items-center justify-center text-sm font-bold text-neutral-500 w-7 h-7 rounded-lg bg-[#1a1a1a] group-hover:bg-orange-500/10 group-hover:text-orange-500 transition-colors"
+              >
+                3
+              </span>
+
+              <span> إعدادات الكاميرا </span>
+            </div>
+
+            <div
+              class="flex items-center gap-3 p-3 rounded-xl text-neutral-400 transition-all duration-300 group cursor-pointer hover:text-orange-500 hover:bg-orange-500/5"
+            >
+              <span
+                class="flex items-center justify-center text-sm font-bold text-neutral-500 w-7 h-7 rounded-lg bg-[#1a1a1a] group-hover:bg-orange-500/10 group-hover:text-orange-500 transition-colors"
+              >
+                4
+              </span>
+
+              <span> التكوين الفني </span>
+            </div>
+
+            <div
+              class="flex items-center gap-3 p-3 rounded-xl text-neutral-400 transition-all duration-300 group cursor-pointer hover:text-orange-500 hover:bg-orange-500/5"
+            >
+              <span
+                class="flex items-center justify-center text-sm font-bold text-neutral-500 w-7 h-7 rounded-lg bg-[#1a1a1a] group-hover:bg-orange-500/10 group-hover:text-orange-500 transition-colors"
+              >
+                5
+              </span>
+
+              <span> الخلاصة </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-[#111111] border border-[#262626] p-6 rounded-2xl mt-6">
+          <div class="grid grid-cols-2 gap-4">
+            <div class="flex flex-col items-center bg-[#0a0a0a] rounded-xl p-4">
+              <span class="mb-2 text-xl">
+                <i class="fa-regular fa-clock text-orange-500"></i>
+              </span>
+
+              <span class="text-white text-sm font-bold text-center"> 8 دقائق للقراءة </span>
+
+              <span class="text-neutral-500 text-xs"> وقت القراءة </span>
+            </div>
+
+            <div class="flex flex-col items-center bg-[#0a0a0a] rounded-xl p-4">
+              <span class="mb-2 text-xl">
+                <i class="fa-regular fa-calendar text-orange-500"></i>
+              </span>
+
+              <span class="text-white text-sm font-bold text-center"> 15 يناير</span>
+
+              <span class="text-neutral-500 text-xs"> تاريخ النشر </span>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="border border-orange-500/20 p-6 rounded-2xl bg-linear-to-br from-orange-500/10 to-yellow-500/5 mt-6"
+        >
+          <div class="flex flex-col items-center">
+            <span
+              class="w-14 h-14 rounded-2xl flex items-center justify-center mb-4 bg-orange-500/10 mx-auto"
+            >
+              <i class="fa-solid fa-envelope text-orange-500 text-xl"></i>
+            </span>
+
+            <h3 class="font-bold text-white mb-2">لا تفوّت جديدنا</h3>
+
+            <p class="text-neutral-400 mb-4 text-sm text-center">اشترك للحصول على أحدث المقالات</p>
+
+            <button
+              class="cursor-pointer text-white font-semibold w-full py-3 bg-orange-500 rounded-xl transition-colors duration-300 hover:bg-orange-600"
+            >
+              تصفح المزيد
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

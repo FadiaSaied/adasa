@@ -1,0 +1,71 @@
+<section class="relative mt-20 min-h-screen hero-background overflow-hidden">
+  <div class="absolute inset-0 z-0 pointer-events-none">
+    <div class="absolute top-0 left-1/4 w-96 h-96 rounded-full bg-orange-500/10 blur-3xl"></div>
+
+    <div class="absolute bottom-0 right-1/4 w-96 h-96 rounded-full bg-yellow-500/5 blur-3xl"></div>
+  </div>
+  <div class="relative z-10 flex flex-col items-center justify-center">
+    <h1
+      class="text-[140px] md:text-[180px] leading-none font-black bg-linear-to-r from-orange-500 via-yellow-500 to-orange-500 bg-clip-text text-transparent"
+    >
+      404
+    </h1>
+
+    <div class="flex flex-col items-center justify-center text-center">
+      <div
+        class="relative w-24 h-24 rounded-full bg-linear-to-br from-orange-500/20 to-yellow-500/20 border border-orange-500/3 mb-6 flex items-center justify-center"
+      >
+        <span class="w-12 h-12 text-orange-500 text-4xl flex items-center justify-center">
+          <i class="fa-regular fa-face-frown"></i>
+        </span>
+        <div
+          class="absolute -top-2 -right-2 w-5 h-4 bg-orange-500 rounded-lg animate-bounce rotate-12"
+        ></div>
+        <div
+          class="absolute -bottom-1 -left-3 w-4 h-4 bg-yellow-500 rounded-full animate-pulse"
+        ></div>
+      </div>
+
+      <h2 class="text-white text-2xl md:text-3xl mb-4 font-bold">عفواً! الصفحة غير موجودة</h2>
+
+      <p class="text-neutral-400 mb-8 text-lg w-125">
+        الصفحة التي تبحث عنها غير موجودة أو تم نقلها. دعنا نعيدك إلى المسار الصحيح.
+      </p>
+      <div
+        class="grid md:grid-cols-2 gap-4 md:gap-1 w-full md:w-fit font-semibold text-[16px] mb-15"
+      >
+        <a
+          routerLink="/home"
+          class="flex items-center justify-center gap-2 text-center mx-2 text-white bg-[#F36912] py-4 px-8 rounded-full transition-transform duration-300 group hover:translate-y-[-2px]"
+        >
+          <span class="text-[14px]"><i class="fa-regular fa-house"></i></span>
+          الذهاب للرئيسية
+        </a>
+        <a
+          routerLink="/blog"
+          class="flex items-center justify-center gap-2 mx-2 text-white border border-neutral-700 py-4 px-8 rounded-full transition-color duration-300 hover:text-[#f97316] hover:bg-[#2D180A] hover:border-[#F97315]"
+        >
+          <span> <i class="fa-solid fa-newspaper"></i></span>
+
+          تصفح المقالات
+        </a>
+      </div>
+    </div>
+    <div class="pt-12 border-t border-[#262626] w-[35%] mx-auto">
+      <p class="text-neutral-500 text-sm mb-4 text-center">قد تجد هذه مفيدة:</p>
+      <div class="text-sm flex flex-wrap justify-center gap-4 mb-1">
+        <a
+          routerLink="/blog"
+          class="text-orange-500 hover:text-orange-400 hover:underline font-medium"
+          >المدونه</a
+        >
+        <a routerLink="" class="text-orange-500 hover:text-orange-400 hover:underline font-medium"
+          >من نحن
+        </a>
+        <a routerLink="" class="text-orange-500 hover:text-orange-400 hover:underline font-medium"
+          >الخصوصية
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
