@@ -6,14 +6,11 @@ I built the UI and styling from scratch and developed the application logic usin
 
 ## ✨ Features
 
-* Responsive photography blog website
-* Home page
-* Blog articles
-* Article details
-* Category filtering
-* Grid and List views
-* Angular routing
-* 404 Not Found page
+* Search articles by title or description
+* Filter articles by category
+* Switch between Grid and List views
+* View article details
+* Navigate between Home and Blog using Angular Routing
 * Responsive design
 
 ## 🛠️ Technologies
@@ -23,10 +20,11 @@ I built the UI and styling from scratch and developed the application logic usin
 * TypeScript
 * Angular
 * Tailwind CSS
+* Angular Router
+* FormsModule
 
 ## 🔗 Links
 
 **Live Demo:**
 https://adasa-seven-omega.vercel.app/
-
 
